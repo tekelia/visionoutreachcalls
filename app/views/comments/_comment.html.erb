@@ -1,0 +1,10 @@
+<div class="comment clearfix">
+	<div class="comment_content">
+		<p class="comment_name"><em><%= comment.name %></em></p>
+		<p class="comment_body"><%= comment.updated_at.strftime("%b %d, %Y") %> |	<%= comment.body %></p>
+	</div>
+	<% if user_signed_in? %>
+	<p><%= link_to "Delete", [comment.call, comment], method: :delete, class:"button", data: { confirm: "Are you sure?"} %>
+	</p>
+	<% end %>
+</div>

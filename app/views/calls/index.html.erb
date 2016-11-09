@@ -1,0 +1,16 @@
+	<div id="page_wrapper">
+		<table class="log_table" border='2'>
+			<tr>
+				<th>Name</th><th>Phone</th><th>Appt. Date</td><th>Income Verified</td>
+			</tr>
+		<% @calls.each_with_index do |call,index| %>
+			<tr>
+				<td><%= link_to call.name, call %></td>
+				<td><%= call.phone %></td>
+				<td><%= call.appt_date %></td>
+				<td><%= call.income %></td>
+			</tr>
+			
+		<% end %>
+		</table>
+	</div>

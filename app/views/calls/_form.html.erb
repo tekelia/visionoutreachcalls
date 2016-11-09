@@ -1,0 +1,53 @@
+<%= form_for @call do |f| %>
+	<% if @call.errors.any? %>
+	<div id="errors">
+		<h2><%= pluralize(@call.errors.count, "error") %> stopped this call from saving. </h2>
+		<ul>
+			<% @call.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+				<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<table class="key_table">
+		<tr>
+			<th><%= f.label :name %></th>
+			<td colspan='3'><%= f.text_field :name , placeholder: 'Name'%></td>
+		</tr>
+		<tr>
+			<th><%= f.label :phone %></th>
+			<td><%= f.text_field :phone , class: "form-control", :required => true, :data => {:mask=> '(999) 999-9999'}, placeholder: '(999) 999-9999'%></td>
+			<th><%= f.label :email %></th>
+			<td><%= f.text_field :email , placeholder:'me@you.com'%></td>
+		</tr>
+		<tr>
+			<th><%= f.label :address %></th>
+			<td colspan='3'><%= f.text_field :address , placeholder: '123 Any Street'%></td>
+		</tr>
+		<tr>
+			<th><%= f.label :city %></th>
+			<td><%= f.text_field :city , placeholder: 'City'%></td>
+			<th><%= f.label :zip %></th>
+			<td><%= f.text_field :zip , placeholder: 'Zip'%></td>
+		</tr>
+		<tr>
+			<th><%= f.label :appointment_date %></th>
+			<td><%= f.text_field :appt_date , value: 'None' %></td>
+			<th><%= f.label :appointment_time %></th>
+			<td><%= f.collection_select :appt_time, Appointment.all, :time, :time %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :income_verified %></th>
+			<td><%= f.radio_button(:income, "Yes") %>
+				<%= f.label(:income, "Yes") %>
+				<%= f.radio_button(:income, "No") %>
+				<%= f.label(:income, "No") %></td>
+			
+		</tr>
+	</table>
+		<p>
+			<%= f.submit %>
+		</p>
+
+	<% end %>

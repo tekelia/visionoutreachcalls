@@ -1,0 +1,16 @@
+<%= form_for([@call, @call.comments.build]) do |f| %>
+
+<p>
+	<%= f.label :submitted_by %> <br>
+	<%= f.text_field :name %> <br>
+
+</p>
+<p>
+	<%= f.label :comment %> <br>
+	<%= f.text_area :body %> <br>	
+</p>
+<br>
+<p>
+	<%= f.submit %>
+</p>
+<% end %>
